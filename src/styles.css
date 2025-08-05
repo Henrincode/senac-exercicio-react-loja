@@ -49,7 +49,7 @@ nav ul li a:hover {
 
 section.banner {
   background: url('https://via.placeholder.com/1200x300') center/cover no-repeat;
-  color: white;
+  color: #0077b6;
   text-align: center;
   padding: 4rem 1rem;
 }
