@@ -11,7 +11,6 @@ function App() {
   const [produtos, setProdutos] = useState([])
   const [carrinho, setCarrinho] = useState([])
 
-  // Simula um "fetch"
   useEffect(() => {
     setProdutos([
       { id: 1, nome: 'Camiseta', preco: 50 },
@@ -24,9 +23,13 @@ function App() {
     setCarrinho((prev) => [...prev, produto])
   }
 
+  const removerDoCarrinho = (indexParaRemover) => {
+    setCarrinho((prev) => prev.filter((_, index) => index !== indexParaRemover))
+  }
+
   return (
     <Router>
-      <Navbar />
+      <Navbar carrinho={carrinho} />
       <Banner />
       <Routes>
         <Route
@@ -40,7 +43,12 @@ function App() {
         />
         <Route
           path="/carrinho"
-          element={<Carrinho carrinho={carrinho} />}
+          element={
+            <Carrinho
+              carrinho={carrinho}
+              removerDoCarrinho={removerDoCarrinho}
+            />
+          }
         />
       </Routes>
       <Footer />
